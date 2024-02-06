@@ -9,19 +9,19 @@ const btnSave = document.querySelector('#btnSave');
 
 //crear un array con todos los productos
 
-const productos = [{id: 1, nombre: 'God of War Ragnarok', consola: 'PS5', precio: 70, img: "/img/GoWR-PS5.jpg"},
-    {id: 2, nombre: 'Spiderman 2', consola: 'PS5', precio: 70, img: "/img/Sm2-PS5.jpg"},    
-    {id: 3, nombre: 'God of War Ragnarok', consola: 'PS4', precio: 50, img: "/img/GoWR-PS4.jpg"},
-    {id: 4, nombre: 'Forza Horizon 5', consola: 'Xbox Series X', precio: 70, img: "/img/FH5-XboxSeriesX.jpg"},
-    {id: 5, nombre: 'Forza Horizon 3', consola: 'Xbox One', precio: 20, img: "/img/FH3-XboxOne.jpg"},
-    {id: 6, nombre: 'Grand Theft Auto 5', consola: 'PC', precio: 40, img: "/img/GTA5-PC.jpg"},
-    {id: 7, nombre: 'Baldurs Gate 3', consola: 'PC', precio: 35, img: "/img/BG3-PC.jpg"},
-    {id: 8, nombre: 'Pokemon Shield', consola: 'Nintendo Switch', precio: 50, img: "/img/PS-NintendoSwitch.jpg"},
-    {id: 9, nombre: 'Call of Duty Modern Warfare 3', consola: 'PS5', precio: 65, img: "/img/CoDMW-PS5.jpg"},
-    {id: 10, nombre: 'The Elder Scroll V: Skyrim', consola: 'PS4', precio: 15, img: "/img/ES5S-PS4.jpg"},
-    {id: 11, nombre: 'The Elder Scroll V: Skyrim', consola: 'Xbox One', precio: 15, img: "/img/ES5S-XboxOne.jpg"},
-    {id: 12, nombre: 'Madden NFL 24', consola: 'Xbox Series X', precio: 70, img: "/img/NFL24-XboxSeriesX.jpg"},
-    {id: 13, nombre: 'Mario Kart 8 Deluxe', consola: 'Nintendo Switch', precio: 60, img: "/img/MK8D-NintendoSwitch.jpg"}
+const productos = [{id: 1, nombre: 'God of War Ragnarok', consola: 'PS5', precio: 70, img: "../img/GoWR-PS5.jpg"},
+    {id: 2, nombre: 'Spiderman 2', consola: 'PS5', precio: 70, img: "../img/Sm2-PS5.jpg"},    
+    {id: 3, nombre: 'God of War Ragnarok', consola: 'PS4', precio: 50, img: "../img/GoWR-PS4.jpg"},
+    {id: 4, nombre: 'Forza Horizon 5', consola: 'Xbox Series X', precio: 70, img: "../img/FH5-XboxSeriesX.jpg"},
+    {id: 5, nombre: 'Forza Horizon 3', consola: 'Xbox One', precio: 20, img: "../img/FH3-XboxOne.jpg"},
+    {id: 6, nombre: 'Grand Theft Auto 5', consola: 'PC', precio: 40, img: "../img/GTA5-PC.jpg"},
+    {id: 7, nombre: 'Baldurs Gate 3', consola: 'PC', precio: 35, img: "../img/BG3-PC.jpg"},
+    {id: 8, nombre: 'Pokemon Shield', consola: 'Nintendo Switch', precio: 50, img: "../img/PS-NintendoSwitch.jpg"},
+    {id: 9, nombre: 'Call of Duty Modern Warfare 3', consola: 'PS5', precio: 65, img: "../img/CoDMW-PS5.jpg"},
+    {id: 10, nombre: 'The Elder Scroll V: Skyrim', consola: 'PS4', precio: 15, img: "../img/ES5S-PS4.jpg"},
+    {id: 11, nombre: 'The Elder Scroll V: Skyrim', consola: 'Xbox One', precio: 15, img: "../img/ES5S-XboxOne.jpg"},
+    {id: 12, nombre: 'Madden NFL 24', consola: 'Xbox Series X', precio: 70, img: "../img/NFL24-XboxSeriesX.jpg"},
+    {id: 13, nombre: 'Mario Kart 8 Deluxe', consola: 'Nintendo Switch', precio: 60, img: "../img/MK8D-NintendoSwitch.jpg"}
 ];
 
 // JS Carrito
