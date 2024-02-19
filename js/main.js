@@ -9,20 +9,7 @@ const btnSave = document.querySelector('#btnSave');
 
 //crear un array con todos los productos
 
-const productos = [{id: 1, nombre: 'God of War Ragnarok', consola: 'PS5', precio: 70, img: "./img/GoWR-PS5.jpg"},
-    {id: 2, nombre: 'Spiderman 2', consola: 'PS5', precio: 70, img: "./img/Sm2-PS5.jpg"},    
-    {id: 3, nombre: 'God of War Ragnarok', consola: 'PS4', precio: 50, img: "./img/GoWR-PS4.jpg"},
-    {id: 4, nombre: 'Forza Horizon 5', consola: 'Xbox Series X', precio: 70, img: "./img/FH5-XboxSeriesX.jpg"},
-    {id: 5, nombre: 'Forza Horizon 3', consola: 'Xbox One', precio: 20, img: "./img/FH3-XboxOne.jpg"},
-    {id: 6, nombre: 'Grand Theft Auto 5', consola: 'PC', precio: 40, img: "./img/GTA5-PC.jpg"},
-    {id: 7, nombre: 'Baldurs Gate 3', consola: 'PC', precio: 35, img: "./img/BG3-PC.jpg"},
-    {id: 8, nombre: 'Pokemon Shield', consola: 'Nintendo Switch', precio: 50, img: "./img/PS-NintendoSwitch.jpg"},
-    {id: 9, nombre: 'Call of Duty Modern Warfare 3', consola: 'PS5', precio: 65, img: "./img/CoDMW-PS5.jpg"},
-    {id: 10, nombre: 'The Elder Scroll V: Skyrim', consola: 'PS4', precio: 15, img: "./img/ES5S-PS4.jpg"},
-    {id: 11, nombre: 'The Elder Scroll V: Skyrim', consola: 'Xbox One', precio: 15, img: "./img/ES5S-XboxOne.jpg"},
-    {id: 12, nombre: 'Madden NFL 24', consola: 'Xbox Series X', precio: 70, img: "./img/NFL24-XboxSeriesX.jpg"},
-    {id: 13, nombre: 'Mario Kart 8 Deluxe', consola: 'Nintendo Switch', precio: 60, img: "./img/MK8D-NintendoSwitch.jpg"}
-];
+let product_list = []
 
 // JS Carrito
 const getCarrito = JSON.parse( localStorage.getItem('carrito') ) || [];
@@ -35,20 +22,34 @@ btnModalCarrito.addEventListener('click', function (){
     renderCarrito(list)
     modal.show();
 })
+
 btnClose.addEventListener('click', ()=> {
     modal.hide();
 })
+
 btnSave.addEventListener('click', () => {
+        setTimeout( () => {
+
+        
+        Swal.fire({
+            title: "Compra finalizada",
+            text: "Su compra fue hecha con exito",
+            icon: "success"
+        });
+    
+
+    }, 0)
+    modal.hide()
     carrito.deleteCarrito()
-    modalListProducts.innerHTML = ''
-    cartSum.innerText = carrito.getSum()
     cartCount.innerText = carrito.getCount();
     localStorage.removeItem('carrito')
+    
 })
 
+//funcion para reenderizar prductos
 const renderProductos = (list) => {
     contenedor.innerHTML = '';
-    productos.forEach(producto => {
+    list.forEach(producto => {
         contenedor.innerHTML += 
                                  `<div class="col">   
                                     <div class="card h-100">
@@ -67,11 +68,14 @@ const renderProductos = (list) => {
         btn.addEventListener('click', agregarCarrito);
     });
 }
+
+//funcion que renderiza el carrito
 const renderCarrito = (list) => {
     modalListProducts.innerHTML = ''
     list.forEach( product => {
         modalListProducts.innerHTML += // html
             `<tr>
+            <td> <img class= "imgCarrito"src="${product.img}" alt=""> </td>
             <td> ${product.nombre} </td>
             <td> ${product.unidades}</td>
             <td>$${product.precio}</td>
@@ -79,13 +83,42 @@ const renderCarrito = (list) => {
 
         </tr>`
     })
+    
 }
 
+//funcion que hace un target a los botones para agregar al carrito
 const agregarCarrito = (e) =>{
     const id = e.target.id;
-    const producto = productos.find( item => item.id == id ); 
+    const producto = product_list.find( item => item.id == id ); 
     carrito.addToCart(producto)
     cartCount.innerText = carrito.getCount();
+
+     Toastify({
+        close: true,
+        text: "Producto agregado al Carrito",
+        gravity: 'bottom',
+        duration: 3000,
+        style: {
+            background: "linear-gradient(to right, #ff6600, #fe8e43",
+          },
+    }).showToast();
 }
 
-renderProductos(productos)
+//obtener los productos a través de un fetch y los reenderizo
+
+const getProducts = async () => {
+    try{
+        const endpoint = 'js/productos.json'
+        const response = await fetch(endpoint)
+        const json = await response.json()
+        const { productos } = json
+        renderProductos(productos) 
+        product_list = productos
+    }
+    catch{
+        alert('error')
+    }
+
+    
+}
+getProducts()

@@ -6,7 +6,7 @@ class Carrito{
     addToCart({nombre, precio, img, id}){
         const index = this.carrito.findIndex( producto => producto.id == id);
         if(index == -1){
-            this.carrito.push({id, nombre, precio, unidades: 1})
+            this.carrito.push({id, nombre, precio, img, unidades: 1})
         }
         else{
             this.carrito[index].unidades += 1;
